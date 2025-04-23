@@ -1,4 +1,4 @@
-Have you ever dreamed about computing phonons using Neural Network potentials? Me neither, but here we are.
+Have you ever dreamed about computing phonons spectra using Neural Network potentials? Me neither, but here we are.
 
 ## Installation of the basic components
 
