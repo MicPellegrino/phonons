@@ -18,11 +18,11 @@ You should be good to go!
 
 A few remarks:
 - The script to build LAMMPS+Python+MACE is based on [https://mace-docs.readthedocs.io/en/latest/guide/lammps.html](https://mace-docs.readthedocs.io/en/latest/guide/lammps.html) and on my research project. Feel free to modify it, at your own risk!
-- It seems to be **very** important to install `mpi4py` before installing LAMMPS Python API, otherwise it may not recognize the correct MPI backend, which will most surely lead to errors/bugs; `mpi4py` is in the conda environment, but please double-check.
+- It seems to be **very** important to install `mpi4py` **before** installing LAMMPS Python API, otherwise it may not recognize the correct MPI backend, which will most surely lead to errors/bugs; `mpi4py` is in the conda environment, so there's should be no problem if you follow the instructions step-by-step.
 - If for some reason you want to build LAMMPS+MACE for CPU (no GPU), make sure to download the correct LibTorch library and modify `build-lammps.sh` removing all the GPU stuff.
 
 ## Extras
 
 ### MACE
 
-[...]
+In order to use a MACE NNP potential in LAMMPS, one has first to convert a MACE 'pickled' `.model` model file into a Torch-readable `.pt` file, to then provide to LAMMPS `pair_style` command. You can do that by following the instructions here: [https://mace-docs.readthedocs.io/en/latest/guide/lammps.html](https://mace-docs.readthedocs.io/en/latest/guide/lammps.html). However, I would suggest **against** installing `mace-torch` and doing the convertion inside the same environment. You should build a separate environment where to install MACE and PyTorch (just make sure PyTorch is consistent, i.e. it's the same version for the same CUDA backend). Have a look at my other two repositories: [https://github.com/MicPellegrino/workflow-hea](https://github.com/MicPellegrino/workflow-hea), [https://github.com/MicPellegrino/benchmark-mace](https://github.com/MicPellegrino/benchmark-mace). **NB** unfortunately neither MACE nor PyTorch support conda installation, you can either use `pip` or clone the github/download the shared library.
