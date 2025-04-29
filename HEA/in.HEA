@@ -6,14 +6,10 @@ atom_style	atomic
 atom_modify map yes
 newton 		on
 
-# package 	omp 12
-
 read_data	hea.lmp
+ 
+# Change to the MACE NNP you want to use:
 variable 	ff string "/home/michele/benchmark-mace/models-uob/GPU_Models/BCC/mace01_64channel_stagetwo.model-lammps.pt"
+
 pair_style  mace no_domain_decomposition
 pair_coeff	* * ${ff} Mo W Al Ti Cr
-
-# pair_style	eam/fs/omp
-# pair_coeff	* * W.eam.fs W
-# pair_style	eam/fs
-# pair_coeff	* * Marinica_w_eam2.fs W
