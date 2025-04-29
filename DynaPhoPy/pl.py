@@ -338,7 +338,6 @@ class PhonoBase:
                 #             file.write('\n')
 
         
-        # plt.savefig("W_dispersion.png", dpi=300, bbox_inches='tight')
         plt.savefig(png_name+tag+".png", dpi=300, bbox_inches='tight')
         plt.show()
 
