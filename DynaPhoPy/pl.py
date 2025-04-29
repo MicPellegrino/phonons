@@ -450,7 +450,8 @@ class Phonolammps(PhonoBase):
                  show_log=False,
                  show_progress=False,
                  use_NAC=False,
-                 symmetrize=True):
+                 symmetrize=True,
+                 lammps_args=[]):
         """
         Main PhonoLAMMPS class
 
@@ -490,6 +491,9 @@ class Phonolammps(PhonoBase):
             print ('Units style not supported, use: {}'.format(unit_factors.keys()))
             exit()
 
+        # Additional imput flags for LAMMPS
+        self._lammps_args = lammps_args
+
 
     def get_units(self, commands_list):
         """
@@ -519,9 +523,12 @@ class Phonolammps(PhonoBase):
 
         cmd_list = ['-log', 'none']
         # HACK: adding Kokkoks-on-GPU flags
-        cmd_list += ['-k', 'on', 'g', '1', '-sf', 'kk']
+        # cmd_list += ['-k', 'on', 'g', '1', '-sf', 'kk']
         if not self._show_log:
             cmd_list += ['-echo', 'none', '-screen', 'none']
+
+        # Adding other flags (e.g. to run on GPU, or with OpenMP)
+        cmd_list += self._lammps_args
 
         lmp = lammps.lammps(cmdargs=cmd_list)
         lmp.commands_list(self._lammps_commands_list)
@@ -600,9 +607,11 @@ class Phonolammps(PhonoBase):
 
         cmd_list =  ['-log', 'none']
         # HACK: adding Kokkoks-on-GPU flags
-        cmd_list += ['-k', 'on', 'g', '1', '-sf', 'kk']
+        # cmd_list += ['-k', 'on', 'g', '1', '-sf', 'kk']
         if not self._show_log:
             cmd_list += ['-echo', 'none', '-screen', 'none']
+
+        cmd_list += self._lammps_args
 
         lmp = lammps.lammps(cmdargs=cmd_list)
         lmp.commands_list(self._lammps_commands_list)
