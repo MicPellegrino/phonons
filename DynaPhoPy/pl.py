@@ -522,8 +522,6 @@ class Phonolammps(PhonoBase):
         supercell_sizes = np.diag(self._supercell_matrix)
 
         cmd_list = ['-log', 'none']
-        # HACK: adding Kokkoks-on-GPU flags
-        # cmd_list += ['-k', 'on', 'g', '1', '-sf', 'kk']
         if not self._show_log:
             cmd_list += ['-echo', 'none', '-screen', 'none']
 
@@ -585,7 +583,6 @@ class Phonolammps(PhonoBase):
         #     print(s, '{:10.5f} {:10.5f} {:10.5f}'.format(*coordinates[i]) + '  {} {}'.format(id[i], i+1))
 
         lmp.close()
-        # Avoid Kokkos+CUDA error?
         # lmp.finalize()
 
         return forces
@@ -606,8 +603,6 @@ class Phonolammps(PhonoBase):
         import lammps
 
         cmd_list =  ['-log', 'none']
-        # HACK: adding Kokkoks-on-GPU flags
-        # cmd_list += ['-k', 'on', 'g', '1', '-sf', 'kk']
         if not self._show_log:
             cmd_list += ['-echo', 'none', '-screen', 'none']
 
@@ -630,7 +625,6 @@ class Phonolammps(PhonoBase):
         forces = np.array([[fp[i][0], fp[i][1], fp[i][2]] for i in range(na)], dtype=float)
 
         lmp.close()
-        # Avoid Kokkos+CUDA error?
         # lmp.finalize()
 
         self._structure.set_positions(positions)
