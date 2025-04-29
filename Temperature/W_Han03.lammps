@@ -1,0 +1,9 @@
+clear
+units		metal
+dimension	3
+boundary	p p p
+atom_style	atomic
+
+read_data W_bcc_unit.lmp
+pair_style	eam/fs
+pair_coeff	* * W.eam.fs W

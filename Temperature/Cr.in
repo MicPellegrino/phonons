@@ -1,0 +1,13 @@
+clear
+units		metal
+dimension	3
+boundary	p p p
+atom_style	atomic
+atom_modify 	map yes
+newton          on
+
+# package 	omp 12
+
+read_data 	Cr_bcc_unit.lmp
+pair_style	mace no_domain_decomposition
+pair_coeff      * * /home/michele/benchmark-mace/models-uob/GPU_Models/BCC/mace01_64channel_stagetwo.model-lammps.pt Cr
