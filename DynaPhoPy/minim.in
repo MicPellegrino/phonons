@@ -3,33 +3,31 @@ units		metal
 dimension	3
 boundary	p p p
 atom_style	atomic
-atom_modify 	map yes
-
-# package omp 	32
+atom_modify map yes
 newton 		on
 
 # ------------- Read geometry -------------------
-read_data	W_bcc_unit.lmp
+read_data   W_bcc_unit.lmp
 # ------------- Define interatomic potential ----
-# pair_style	eam/fs
-# pair_coeff    * * W-Mo.eam.fs W
-pair_style    	mace no_domain_decomposition
-pair_coeff	* * /home/michele/benchmark-mace/models-uob/GPU_Models/BCC/mace01_64channel_stagetwo.model-lammps.pt W
+pair_style  mace no_domain_decomposition
+pair_coeff  * * /home/michele/benchmark-mace/models-uob/GPU_Models/BCC/mace01_64channel_stagetwo.model-lammps.pt W
 
 
-variable	E equal pe
-variable        N equal atoms
+variable    E equal pe
+variable    N equal atoms
 
-# compute       eng all pe/atom
+# Local virials cannot be computed using NNPs
+# compute   eng all pe/atom
 # compute	eatoms all reduce sum c_eng
-# compute     	1 all stress/atom NULL virial 
+# compute   1 all stress/atom NULL virial 
 # compute 	csym all centro/atom bcc
 # compute 	keng all ke/atom
+
 compute	  	myTemp all temp
 
 # ------------- Minimise structure first --------
-thermo 		10
-thermo_style 	custom step pe lx ly lz press pxx pyy pzz c_myTemp # c_eatoms
+thermo 		    10
+thermo_style    custom step pe lx ly lz press pxx pyy pzz c_myTemp # c_eatoms
 
 dump		1 all cfg 100 *.cfg mass type xs ys zs # c_keng c_1[1] c_1[2] c_1[3] c_1[4] c_1[5] c_1[6]
 dump_modify	1 element W
