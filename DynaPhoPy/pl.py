@@ -127,7 +127,7 @@ class PhonoBase:
 
 
 
-    def plot_phonon_dispersion_bands(self, absv=False, tag='', writeFile=True, wave_vector_labels=True):
+    def plot_phonon_dispersion_bands(self, absv=False, tag='', writeFile=True, wave_vector_labels=True, png_name="dispersion"):
         """
         Plot phonon band structure using seekpath automatic k-path
         Warning: The labels may be wrong if the structure is not standarized
@@ -338,7 +338,8 @@ class PhonoBase:
                 #             file.write('\n')
 
         
-        plt.savefig("W_dispersion.png", dpi=300, bbox_inches='tight')
+        # plt.savefig("W_dispersion.png", dpi=300, bbox_inches='tight')
+        plt.savefig(png_name+tag+".png", dpi=300, bbox_inches='tight')
         plt.show()
 
 
