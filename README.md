@@ -3,6 +3,7 @@ Have you ever dreamed about computing phonons spectra using Neural Network poten
 ## Installation of the basic components
 
 Prerequisites:
+- GCC (tested for `gcc version 11.4.0`)
 - MPI (tested for `(Open MPI) 4.1.2`)
 - CUDA (tested for `CUDA Version: 12.6`)
 
