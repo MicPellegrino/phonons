@@ -21,6 +21,7 @@ A few remarks:
 - Make sure to use clone `mace` branch from [https://github.com/ACEsuit/lammps](https://github.com/ACEsuit/lammps), as the default branch (`develop`) uses a different LAMMPS interface to implement MACE pair style.
 - It seems to be **very** important to install `mpi4py` **before** installing LAMMPS Python API, otherwise it may not recognize the correct MPI backend, which will most surely lead to errors/bugs; `mpi4py` is in the conda environment, so there's should be no problem if you follow the instructions step-by-step.
 - If for some reason you want to build LAMMPS+MACE for CPU (no GPU), make sure to download the correct LibTorch library and modify `build-lammps.sh` removing all the GPU stuff.
+- If you have any issue at CMake-time related to Intel MKL, have a look here: [https://github.com/ACEsuit/mace/issues/660#issuecomment-2444175254](https://github.com/ACEsuit/mace/issues/660#issuecomment-2444175254).
 
 ## Extras
 
