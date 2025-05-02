@@ -27,7 +27,7 @@ showplot=True
 
 phlammps = Phonolammps(lammpsF, supercell_matrix=[[2, 0, 0], [0, 2, 0], [0, 0, 2]], show_log=True, show_progress=True)
 
-phlammps.plot_phonon_dispersion_bands(absv=True, tag='Cr')
+# phlammps.plot_phonon_dispersion_bands(absv=True, tag='Cr')
 
 
 
@@ -96,9 +96,3 @@ with open(os.path.join(os.getcwd(), f'dynaphopy_{species}_{temperature}K{path}.c
         file.write(','.join(f'{ff_}' for ff_ in ff) + '\n')
 
 ################################################################################
-
-# Workaround for a problem that should have never existed
-lmp = lammps.lammps(cmdargs=['-k','on','g','1','-sf','kk'])
-lmp.close()
-lmp.finalize()
-

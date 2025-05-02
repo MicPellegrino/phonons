@@ -10,4 +10,4 @@ newton          on
 
 read_data 	Cr_bcc_unit.lmp
 pair_style	mace no_domain_decomposition
-pair_coeff      * * /home/michele/benchmark-mace/models-uob/GPU_Models/BCC/mace01_64channel_stagetwo.model-lammps.pt Cr
+pair_coeff  * * /home/michele/benchmark-mace/models-uob/GPU_Models/BCC/mace01_64channel_stagetwo.model-lammps.pt Cr
