@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import lammps
 
 phlammps = Phonolammps('in.HEA',
-                       supercell_matrix=[[2, 0, 0], [0, 2, 0], [0, 0, 2]],
+                       supercell_matrix=[[3, 0, 0], [0, 3, 0], [0, 0, 3]],
                        show_log=True, show_progress=True,
                        lammps_args=['-k', 'on', 'g', '1', '-sf', 'kk']
                        )
