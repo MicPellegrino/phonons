@@ -7,7 +7,7 @@ Prerequisites:
 - MPI (tested for `(Open MPI) 4.1.2`)
 - CUDA (tested for `CUDA Version: 12.6`)
 
-Building all the software needed for this project is quite tricky. Let's go step by step:
+### Old method: ad-hoc MACE Kokkos interface
 
 1. After cloning/downloading, create a conda/mamba environment by running `conda env create -f environment.yml` and activate it by running `conda activate phonon`.
 2. Download LibTorch to store locally from [https://pytorch.org/](https://pytorch.org/). It could look something like: `wget https://download.pytorch.org/libtorch/cu126/libtorch-shared-with-deps-2.6.0%2Bcu126.zip` . Unzip the file (you should get a folder called `libtorch`).
@@ -23,6 +23,10 @@ A few remarks:
 - It seems to be **very** important to install `mpi4py` **before** installing LAMMPS Python API, otherwise it may not recognize the correct MPI backend, which will most surely lead to errors/bugs; `mpi4py` is in the conda environment, so there's should be no problem if you follow the instructions step-by-step.
 - If for some reason you want to build LAMMPS+MACE for CPU (no GPU), make sure to download the correct LibTorch library and modify `build-lammps.sh` removing all the GPU stuff.
 - If you have any issue at CMake-time related to Intel MKL, have a look here: [https://github.com/ACEsuit/mace/issues/660#issuecomment-2444175254](https://github.com/ACEsuit/mace/issues/660#issuecomment-2444175254).
+
+### New method: running MACE via LAMMPS ML-IAP interface
+
+Coming soon...
 
 ## Extras
 
